@@ -17,21 +17,43 @@ class Castle implements Building
 {
     private $room;
 
+    /**
+     * Castle constructor.
+     * This class implement Building contract.
+     * First, the user appears in the Hall
+     */
     public function __construct()
     {
         $this->room = new Hall();
     }
 
+    /**
+     * This method return room object.
+     *
+     * @return AbstractRoom
+     */
     public function getRoom() : AbstractRoom
     {
         return $this->room;
     }
 
+    /**
+     * This method change room in building (in this case in Castle).
+     *
+     * @param AbstractRoom $room
+     */
     public function changeRoom(AbstractRoom $room)
     {
         $this->room = $room;
     }
 
+    /**
+     * This method change room in building by name.
+     *
+     * @param $roomName
+     * @return string
+     * @throws NotFoundException
+     */
     public function changeRoomByName($roomName)
     {
         if($this->room->isNearestRoom($roomName)) {
