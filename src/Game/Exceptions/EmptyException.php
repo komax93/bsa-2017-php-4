@@ -8,7 +8,12 @@
 
 namespace BinaryStudioAcademy\Game\Exceptions;
 
-
+/**
+ * Class EmptyException
+ * This exception use when something is not exists
+ *
+ * @package BinaryStudioAcademy\Game\Exceptions
+ */
 class EmptyException extends \Exception
 {
 

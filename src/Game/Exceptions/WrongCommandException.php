@@ -8,7 +8,12 @@
 
 namespace BinaryStudioAcademy\Game\Exceptions;
 
-
+/**
+ * Class WrongCommandException
+ * This exception use when some command is wrong
+ *
+ * @package BinaryStudioAcademy\Game\Exceptions
+ */
 class WrongCommandException extends \Exception
 {
 
