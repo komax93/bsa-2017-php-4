@@ -9,7 +9,7 @@
 namespace BinaryStudioAcademy\Game;
 
 use BinaryStudioAcademy\Game\Contracts\Building;
-use BinaryStudioAcademy\Game\Contracts\Room;
+use BinaryStudioAcademy\Game\Rooms\AbstractRoom;
 use BinaryStudioAcademy\Game\Exceptions\NotFoundException;
 use BinaryStudioAcademy\Game\Rooms\Hall;
 
@@ -22,12 +22,12 @@ class Castle implements Building
         $this->room = new Hall();
     }
 
-    public function getRoom() : Room
+    public function getRoom() : AbstractRoom
     {
         return $this->room;
     }
 
-    public function changeRoom(Room $room)
+    public function changeRoom(AbstractRoom $room)
     {
         $this->room = $room;
     }

@@ -6,11 +6,11 @@
  * Time: 15:47
  */
 
-namespace BinaryStudioAcademy\Game\Contracts;
+namespace BinaryStudioAcademy\Game\Rooms;
 
 use BinaryStudioAcademy\Game\Exceptions\EmptyException;
 
-abstract class Room
+abstract class AbstractRoom
 {
     protected $name;
     protected $coin;

@@ -8,9 +8,11 @@
 
 namespace BinaryStudioAcademy\Game\Contracts;
 
+use BinaryStudioAcademy\Game\Rooms\AbstractRoom;
+
 interface Building
 {
-    public function getRoom() : Room;
-    public function changeRoom(Room $room);
+    public function getRoom() : AbstractRoom;
+    public function changeRoom(AbstractRoom $room);
     public function changeRoomByName($roomName);
 }

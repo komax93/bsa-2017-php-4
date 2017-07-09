@@ -8,10 +8,9 @@
 
 namespace BinaryStudioAcademy\Game\Rooms;
 
-use BinaryStudioAcademy\Game\Contracts\Room;
 use BinaryStudioAcademy\Game\Traits\RoomsTrait;
 
-class Cabinet extends Room
+class Cabinet extends AbstractRoom
 {
     use RoomsTrait;
     const NEAREST_ROOMS = ['corridor'];
