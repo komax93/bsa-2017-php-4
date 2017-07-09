@@ -11,6 +11,7 @@ namespace BinaryStudioAcademy\Game;
 class User
 {
     private $coinsCount;
+    private $maxCoinsCount;
 
     public function __construct()
     {
@@ -24,7 +25,24 @@ class User
 
     public function addCoins($count)
     {
-        echo "Congrats! Coin has been added to inventory.";
         $this->coinsCount += $count;
+
+        if($this->coinsCount < $this->maxCoinsCount) {
+            echo "Congrats! Coin has been added to inventory.";
+        }
+        else {
+            echo "Good job. You've completed this quest. Bye!";
+            exit();
+        }
+    }
+
+    public function getMaxCoinsCount()
+    {
+        return $this->maxCoinsCount;
+    }
+
+    public function setMaxCoinsCount($maxCoinsCount)
+    {
+        $this->maxCoinsCount = $maxCoinsCount;
     }
 }

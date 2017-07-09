@@ -4,16 +4,18 @@ namespace BinaryStudioAcademy\Game;
 
 use BinaryStudioAcademy\Game\Contracts\Io\Reader;
 use BinaryStudioAcademy\Game\Contracts\Io\Writer;
+use BinaryStudioAcademy\Game\Rooms\Hall;
 
 class Game
 {
     const COINS_TO_WIN = 5;
 
-    private $command;
+    private $app;
 
     public function __construct()
     {
-        $this->command = new Command(new Castle(), new User());
+        $this->app = new DI(new Castle(new Hall()), new User());
+        $this->app->setCoinsToWin(self::COINS_TO_WIN);
     }
 
     public function start(Reader $reader, Writer $writer): void
@@ -24,8 +26,8 @@ class Game
             $writer->write("Command: ");
             $action = trim($reader->read());
 
-            $this->command->setCommand($action);
-            $this->command->getMessage();
+            $this->app->command->setCommand($action);
+            $this->app->command->getMessage();
 
             echo PHP_EOL;
         }
