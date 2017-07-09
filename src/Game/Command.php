@@ -61,35 +61,35 @@ class Command
     {
         switch ($this->command) {
             case 'status' :
-                echo "You're at {$this->building->getRoom()->getName()}. You have {$this->user->getCoinsCount()} coins.";
+                return "You're at {$this->building->getRoom()->getName()}. You have {$this->user->getCoinsCount()} coins.";
                 break;
 
             case 'observe' :
-                echo "There {$this->building->getRoom()->getCoinsCount()} coin(s) here.";
+                return "There {$this->building->getRoom()->getCoinsCount()} coin(s) here.";
                 break;
 
             case 'grab' :
                 try {
-                    $this->user->addCoins($this->building->getRoom()->grabCoin());
+                    return $this->user->addCoins($this->building->getRoom()->grabCoin());
                 } catch (EmptyException $e) {
-                    echo $e->getMessage();
+                    return $e->getMessage();
                 }
                 break;
 
             case 'where' :
-                echo "You're at {$this->building->getRoom()->getName()}. You can go to: {$this->building->getRoom()->getNearestRooms()}.";
+                return "You're at {$this->building->getRoom()->getName()}. You can go to: {$this->building->getRoom()->getNearestRooms()}.";
                 break;
 
             case 'help' :
-                echo "Command List: status, observe, grab, where, help, go room.";
+                return "Command List: status, observe, grab, where, help, go room.";
                 break;
 
             case (preg_match("/^go\s(.*)$/i", $this->command) ? true : false) :
                 $command = $this->getRoomNameFromCommand($this->command);
                 try {
-                    $this->building->changeRoomByName($command);
+                    return $this->building->changeRoomByName($command);
                 } catch (NotFoundException $e) {
-                    echo $e->getMessage();
+                    return $e->getMessage();
                 }
                 break;
 
@@ -101,7 +101,7 @@ class Command
                 try {
                     throw new WrongCommandException("Unknown command: '{$this->command}'.");
                 } catch (WrongCommandException $e) {
-                    echo $e->getMessage();
+                    return $e->getMessage();
                 }
                 break;
         }

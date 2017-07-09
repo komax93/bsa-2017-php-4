@@ -37,7 +37,7 @@ class Castle implements Building
             $roomObject = "\BinaryStudioAcademy\Game\Rooms\\" . ucfirst($roomName);
             $this->room = new $roomObject;
 
-            echo "You're at {$this->getRoom()->getName()}. You can go to: {$this->getRoom()->getNearestRooms()}.";
+            return "You're at {$this->getRoom()->getName()}. You can go to: {$this->getRoom()->getNearestRooms()}.";
         }
         else {
             throw new NotFoundException("Can not go to {$roomName}.");

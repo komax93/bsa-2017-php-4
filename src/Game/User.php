@@ -28,10 +28,10 @@ class User
         $this->coinsCount += $count;
 
         if($this->coinsCount < $this->maxCoinsCount) {
-            echo "Congrats! Coin has been added to inventory.";
+            return "Congrats! Coin has been added to inventory.";
         }
         else {
-            echo "Good job. You've completed this quest. Bye!";
+            return "Good job. You've completed this quest. Bye!";
             exit();
         }
     }
