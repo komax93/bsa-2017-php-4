@@ -9,19 +9,24 @@ class Game
 {
     const COINS_TO_WIN = 5;
 
+    private $command;
+
+    public function __construct()
+    {
+        $this->command = new Command(new Castle(), new User());
+    }
+
     public function start(Reader $reader, Writer $writer): void
     {
-        //TODO: Implement infinite loop and process user's input
+        $writer->writeln("Welcome to the game. Choose your command!");
 
-        // Feel free to delete these lines
+        while(true) {
+            $writer->write("Command: ");
+            $action = trim($reader->read());
 
-        $writer->writeln("You can't play yet. Please read input and convert it to commands.");
-        $writer->writeln("Don't forget to create game's world.");
-
-        $writer->write("Type your name:");
-        $input = trim($reader->read());
-
-        $writer->writeln("Good luck with this task, {$input}!");
+            $this->command->setCommand($action);
+            $this->command->getMessage();
+        }
     }
 
     public function run(Reader $reader, Writer $writer)
