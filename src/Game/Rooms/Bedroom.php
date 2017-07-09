@@ -15,6 +15,9 @@ class Bedroom extends AbstractRoom
     use RoomsTrait;
     const NEAREST_ROOMS = ['corridor'];
 
+    /**
+     * Bedroom constructor.
+     */
     public function __construct()
     {
         $this->name = "bedroom";

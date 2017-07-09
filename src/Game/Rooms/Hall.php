@@ -15,6 +15,9 @@ class Hall extends AbstractRoom
     use RoomsTrait;
     const NEAREST_ROOMS = ['basement', 'corridor'];
 
+    /**
+     * Hall constructor.
+     */
     public function __construct()
     {
         $this->name = "hall";

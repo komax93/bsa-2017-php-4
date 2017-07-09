@@ -15,16 +15,32 @@ abstract class AbstractRoom
     protected $name;
     protected $coin;
 
+    /**
+     * Get current room name
+     *
+     * @return mixed
+     */
     public function getName()
     {
         return $this->name;
     }
 
+    /**
+     * Get coins count in this room
+     *
+     * @return mixed
+     */
     public function getCoinsCount()
     {
         return $this->coin;
     }
 
+    /**
+     * This method grabs 1 coin from the room. If in room is not exist coins - throw EmptyException
+     *
+     * @return int
+     * @throws EmptyException
+     */
     public function grabCoin(): int
     {
         if ($this->coin > 0) {
