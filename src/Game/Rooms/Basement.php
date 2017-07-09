@@ -14,7 +14,7 @@ use BinaryStudioAcademy\Game\Traits\RoomsTrait;
 class Basement extends Room
 {
     use RoomsTrait;
-    const NEAREST_ROOMS = ['hall', 'cabinet'];
+    const NEAREST_ROOMS = ['cabinet', 'hall'];
 
     public function __construct()
     {

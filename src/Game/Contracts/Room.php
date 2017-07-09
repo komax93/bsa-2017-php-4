@@ -8,6 +8,8 @@
 
 namespace BinaryStudioAcademy\Game\Contracts;
 
+use BinaryStudioAcademy\Game\Exceptions\EmptyException;
+
 abstract class Room
 {
     protected $name;
@@ -26,11 +28,13 @@ abstract class Room
     public function grabCoin(): int
     {
         if ($this->coin > 0) {
+
             $this->coin--;
 
             return 1;
         }
-
-        return 0;
+        else {
+            throw new EmptyException("There is no coins left here. Type 'where' to go to another location.");
+        }
     }
 }

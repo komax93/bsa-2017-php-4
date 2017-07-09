@@ -24,6 +24,7 @@ class User
 
     public function addCoins($count)
     {
+        echo "Congrats! Coin has been added to inventory.";
         $this->coinsCount += $count;
     }
 }

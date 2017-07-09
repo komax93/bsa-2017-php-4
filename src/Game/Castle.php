@@ -11,6 +11,7 @@ namespace BinaryStudioAcademy\Game;
 use BinaryStudioAcademy\Game\Contracts\Building;
 use BinaryStudioAcademy\Game\Contracts\Room;
 use BinaryStudioAcademy\Game\Rooms\Hall;
+use BinaryStudioAcademy\Game\Exceptions\NotFoundException;
 
 class Castle implements Building
 {
@@ -36,8 +37,11 @@ class Castle implements Building
         if($this->room->isNearestRoom($roomName)) {
             $roomObject = "\BinaryStudioAcademy\Game\Rooms\\" . ucfirst($roomName);
             $this->room = new $roomObject;
-        }
 
-        return false;
+            echo "You're at {$this->getRoom()->getName()}. You can go to: {$this->getRoom()->getNearestRooms()}.";
+        }
+        else {
+            throw new NotFoundException("Can not go to {$roomName}.");
+        }
     }
 }

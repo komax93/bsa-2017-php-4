@@ -9,6 +9,9 @@
 namespace BinaryStudioAcademy\Game;
 
 use BinaryStudioAcademy\Game\Contracts\Building;
+use BinaryStudioAcademy\Game\Exceptions\EmptyException;
+use BinaryStudioAcademy\Game\Exceptions\NotFoundException;
+use BinaryStudioAcademy\Game\Exceptions\WrongCommandException;
 
 class Command
 {
@@ -60,35 +63,51 @@ class Command
             case 'status' :
                 echo "You're at {$this->building->getRoom()->getName()}. You have {$this->user->getCoinsCount()} coins.";
                 break;
+
             case 'observe' :
                 echo "There {$this->building->getRoom()->getCoinsCount()} coin(s) here.";
                 break;
+
             case 'grab' :
-                echo "Congrats! Coin has been added to inventory.";
-                $this->user->addCoins($this->building->getRoom()->grabCoin());
+                try {
+                    $this->user->addCoins($this->building->getRoom()->grabCoin());
+                } catch (EmptyException $e) {
+                    echo $e->getMessage();
+                }
                 break;
+
             case 'where' :
                 echo "You're at {$this->building->getRoom()->getName()}. You can go to: {$this->building->getRoom()->getNearestRooms()}.";
                 break;
+
             case 'help' :
                 echo "Command List: status, observe, grab, where, help, go room.";
                 break;
+
             case (preg_match("/^go\s(.*)$/i", $this->command) ? true : false) :
-                $command = $this->getGoCommand($this->command);
-                if($this->building->changeRoomByName($command) !== false) {
-                    echo "You're at {$this->building->getRoom()->getName()}. You can go to: {$this->building->getRoom()->getNearestRooms()}.";
+                $command = $this->getRoomNameFromCommand($this->command);
+                try {
+                    $this->building->changeRoomByName($command);
+                } catch (NotFoundException $e) {
+                    echo $e->getMessage();
                 }
                 break;
+
             case 'exit' :
                 exit();
                 break;
+
             default :
-                throw new Exception("You have a command error!");
+                try {
+                    throw new WrongCommandException("Unknown command: '{$this->command}'.");
+                } catch (WrongCommandException $e) {
+                    echo $e->getMessage();
+                }
                 break;
         }
     }
 
-    private function getGoCommand($str)
+    private function getRoomNameFromCommand($str)
     {
         preg_match("/^go\s+([a-zA-Z]+)/", $str, $result);
         return $result[1];

@@ -26,6 +26,8 @@ class Game
 
             $this->command->setCommand($action);
             $this->command->getMessage();
+
+            echo PHP_EOL;
         }
     }
 
