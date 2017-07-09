@@ -29,7 +29,7 @@ class Game
     public function run(Reader $reader, Writer $writer)
     {
         $input = trim($reader->read());
-        $this->world->command->setCommand($input);
-        $writer->writeln($this->world->command->getMessage());
+        $this->world->executeCommand($input);
+        $writer->writeln($this->world->getCommandMessage());
     }
 }
