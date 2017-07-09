@@ -13,7 +13,7 @@ use BinaryStudioAcademy\Game\Commands\{
     Status, Observe, Grab, Unknown, Where, Help, Go
 };
 
-class World
+class GameServiceProvider
 {
     public $building;
     public $user;
