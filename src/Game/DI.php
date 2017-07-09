@@ -22,9 +22,4 @@ class DI
         $this->user = $user;
         $this->command = new Command($this->building, $this->user);
     }
-
-    public function setCoinsToWin($coinsToWin)
-    {
-        $this->user->setMaxCoinsCount($coinsToWin);
-    }
 }

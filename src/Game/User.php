@@ -13,9 +13,10 @@ class User
     private $coinsCount;
     private $maxCoinsCount;
 
-    public function __construct()
+    public function __construct($coinsCount = 0, $maxCoinsCount)
     {
         $this->coinsCount = 0;
+        $this->maxCoinsCount = $maxCoinsCount;
     }
 
     public function getCoinsCount()

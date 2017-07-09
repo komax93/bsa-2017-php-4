@@ -13,8 +13,7 @@ class Game
 
     public function __construct()
     {
-        $this->app = new DI(new Castle(), new User());
-        $this->app->setCoinsToWin(self::COINS_TO_WIN);
+        $this->app = new DI(new Castle(), new User(0, self::COINS_TO_WIN));
     }
 
     public function start(Reader $reader, Writer $writer): void
