@@ -10,6 +10,12 @@ namespace BinaryStudioAcademy\Game\Contracts;
 
 use BinaryStudioAcademy\Game\Rooms\AbstractRoom;
 
+/**
+ * Interface Building
+ * This interface describes the requirements for rooms and spaces.
+ *
+ * @package BinaryStudioAcademy\Game\Contracts
+ */
 interface Building
 {
     public function getRoom() : AbstractRoom;
