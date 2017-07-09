@@ -4,7 +4,6 @@ namespace BinaryStudioAcademy\Game;
 
 use BinaryStudioAcademy\Game\Contracts\Io\Reader;
 use BinaryStudioAcademy\Game\Contracts\Io\Writer;
-use BinaryStudioAcademy\Game\Rooms\Hall;
 
 class Game
 {
@@ -14,13 +13,13 @@ class Game
 
     public function __construct()
     {
-        $this->app = new DI(new Castle(new Hall()), new User());
+        $this->app = new DI(new Castle(), new User());
         $this->app->setCoinsToWin(self::COINS_TO_WIN);
     }
 
     public function start(Reader $reader, Writer $writer): void
     {
-        $writer->writeln("Welcome to the game. Choose your command!");
+        $writer->writeln("Welcome to the game. Enter your command!");
 
         while(true) {
             $writer->write("Command: ");

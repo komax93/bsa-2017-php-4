@@ -11,14 +11,15 @@ namespace BinaryStudioAcademy\Game;
 use BinaryStudioAcademy\Game\Contracts\Building;
 use BinaryStudioAcademy\Game\Contracts\Room;
 use BinaryStudioAcademy\Game\Exceptions\NotFoundException;
+use BinaryStudioAcademy\Game\Rooms\Hall;
 
 class Castle implements Building
 {
     private $room;
 
-    public function __construct(Room $room)
+    public function __construct()
     {
-        $this->room = $room;
+        $this->room = new Hall();
     }
 
     public function getRoom() : Room
