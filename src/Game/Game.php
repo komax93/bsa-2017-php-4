@@ -11,11 +11,18 @@ class Game
 
     private $app;
 
+    /**
+     * Game constructor.
+     */
     public function __construct()
     {
         $this->app = new GameServiceProvider(new Castle(), new User(0, self::COINS_TO_WIN));
     }
 
+    /**
+     * @param Reader $reader
+     * @param Writer $writer
+     */
     public function start(Reader $reader, Writer $writer): void
     {
         $writer->writeln("Welcome to the game. Enter your command!");
@@ -26,6 +33,10 @@ class Game
         }
     }
 
+    /**
+     * @param Reader $reader
+     * @param Writer $writer
+     */
     public function run(Reader $reader, Writer $writer)
     {
         $input = trim($reader->read());
