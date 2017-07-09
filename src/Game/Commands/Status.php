@@ -10,6 +10,11 @@ namespace BinaryStudioAcademy\Game\Commands;
 
 class Status extends AbstractCommand
 {
+    /**
+     * Get message after command execution
+     *
+     * @return string
+     */
     public function getMessage()
     {
         return "You're at {$this->building->getRoom()->getName()}. You have {$this->user->getCoinsCount()} coins.";

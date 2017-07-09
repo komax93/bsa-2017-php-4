@@ -12,6 +12,11 @@ use BinaryStudioAcademy\Game\Exceptions\EmptyException;
 
 class Grab extends AbstractCommand
 {
+    /**
+     * Get message after command execution
+     *
+     * @return string
+     */
     public function getMessage()
     {
         try {

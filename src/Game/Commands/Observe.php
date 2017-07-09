@@ -10,6 +10,11 @@ namespace BinaryStudioAcademy\Game\Commands;
 
 class Observe extends AbstractCommand
 {
+    /**
+     * Get message after command execution
+     *
+     * @return string
+     */
     public function getMessage()
     {
         return "There {$this->building->getRoom()->getCoinsCount()} coin(s) here.";

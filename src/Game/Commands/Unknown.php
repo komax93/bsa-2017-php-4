@@ -14,11 +14,22 @@ class Unknown extends AbstractCommand
 {
     private $command;
 
+    /**
+     * Unknown constructor.
+     * Special constructor for unknown command.
+     *
+     * @param \BinaryStudioAcademy\Game\Contracts\Building $command
+     */
     public function __construct($command)
     {
         $this->command = $command;
     }
 
+    /**
+     * Get message after command execution
+     *
+     * @return string
+     */
     public function getMessage()
     {
         try {
