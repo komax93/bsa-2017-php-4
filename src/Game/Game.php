@@ -9,11 +9,11 @@ class Game
 {
     const COINS_TO_WIN = 5;
 
-    private $app;
+    private $world;
 
     public function __construct()
     {
-        $this->app = new DI(new Castle(), new User(0, self::COINS_TO_WIN));
+        $this->world = new World(new Castle(), new User(0, self::COINS_TO_WIN));
     }
 
     public function start(Reader $reader, Writer $writer): void
@@ -29,7 +29,7 @@ class Game
     public function run(Reader $reader, Writer $writer)
     {
         $input = trim($reader->read());
-        $this->app->command->setCommand($input);
-        $writer->writeln($this->app->command->getMessage());
+        $this->world->command->setCommand($input);
+        $writer->writeln($this->world->command->getMessage());
     }
 }

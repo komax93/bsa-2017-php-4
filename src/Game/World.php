@@ -10,7 +10,7 @@ namespace BinaryStudioAcademy\Game;
 
 use BinaryStudioAcademy\Game\Contracts\Building;
 
-class DI
+class World
 {
     public $building;
     public $user;
