@@ -19,12 +19,21 @@ class GameServiceProvider
     public $user;
     public $command;
 
+    /**
+     * GameServiceProvider constructor.
+     * @param Building $building
+     * @param User $user
+     */
     public function __construct(Building $building, User $user)
     {
         $this->building = $building;
         $this->user = $user;
     }
 
+    /**
+     * This method executes the incoming command. Creates an object of the necessary command
+     * @param $input
+     */
     public function executeCommand($input)
     {
         $params = explode(" ", $input);
@@ -65,6 +74,10 @@ class GameServiceProvider
         }
     }
 
+    /**
+     * This method return command message, after execution
+     * @return mixed
+     */
     public function getCommandMessage()
     {
         return $this->command->getMessage();
